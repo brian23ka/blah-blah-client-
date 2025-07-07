@@ -9,8 +9,13 @@ class WelcomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Welcome Screen'),
       ),
-      body: const Center(
-        child: Text('Welcome to the app!'),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Get Started'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/role');
+          },
+        ),
       ),
     );
   }
