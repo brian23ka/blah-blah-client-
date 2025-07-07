@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 
 class ViewRideScreen extends StatelessWidget {
-  const ViewRideScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final ride = ModalRoute.of(context)!.settings.arguments as Map;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('View Ride Screen'),
-      ),
-      body: const Center(
-        child: Text('View ride details'),
+      appBar: AppBar(title: Text("Ride Posted")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Pickup: \${ride['pickup']}"),
+            Text("Drop-off: \${ride['dropoff']}"),
+            Text("Time: \${ride['time']}"),
+            Text("Price: \${ride['price']}"),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text("View Requests"),
+              onPressed: () => Navigator.pushNamed(context, '/driver/requests'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -10,6 +10,13 @@ class _RiderHomeScreenState extends State<RiderHomeScreen> {
   final _dropOffController = TextEditingController();
 
   @override
+  void dispose() {
+    _pickupController.dispose();
+    _dropOffController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Find a Ride")),
